@@ -1,9 +1,15 @@
 package com.pierdominici.inventory.models;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
+
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
@@ -19,7 +25,7 @@ public class Products {
     private String name;
 
     @Column(name="description")
-    @NotNull(message = "The name cant be null")
+    @NotNull(message = "The description cant be null")
     private String description;
 
     @Column(name="price")

@@ -48,9 +48,14 @@ public class InventoryService {
         }
     }
 
-    public ResponseEntity<String> postProduct(Products product){
+    public ResponseEntity<String> postProduct(Products productRequest){
         try {
-            productsRepository.save(product);
+            Products product=new Products();
+                    product.setName(productRequest.getName());
+                    product.setDescription(productRequest.getDescription());
+                    product.setAmount(productRequest.getAmount());
+                    product.setPrice(productRequest.getPrice());
+            productsRepository.save(productRequest);
             return ResponseEntity.ok("Product created");
         }catch (Exception e){
             e.printStackTrace();
@@ -67,6 +72,7 @@ public class InventoryService {
                 }
                 if(productRequest.getPrice() !=0){
                     product.setPrice(productRequest.getPrice());
+                    System.out.println("price: "+productRequest.getPrice());
                 }
                 if(productRequest.getDescription()!=null){
                     product.setDescription(productRequest.getDescription());
